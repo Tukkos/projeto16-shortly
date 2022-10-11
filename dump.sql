@@ -16,3 +16,10 @@ CREATE TABLE urls (
     "visitCount" INTEGER DEFAULT 0 NOT NULL,
     "createdAt" TIMESTAMP DEFAULT NOW() NOT NULL
 );
+
+CREATE TABLE sessions (
+    "id" SERIAL PRIMARY KEY,
+    "userId" INTEGER REFERENCES "users"("id"),
+    "token" TEXT NOT NULL,
+    "createdAt" TIMESTAMP DEFAULT NOW() NOT NULL
+);

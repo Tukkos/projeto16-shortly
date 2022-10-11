@@ -1,6 +1,7 @@
 import express from 'express';
+
 import { signIn, signUp } from '../controllers/authController.js';
-import { doesPasswordConfirm, isEmailRepeated, signInSchemaVallidation, signUpSchemaValidation } from '../middlewares/authValidation.js';
+import { doesPasswordConfirm, isEmailRepeated, signInSchemaVallidation, signUpSchemaValidation } from '../middlewares/signInUpValidation.js';
 
 const userRouter = express.Router();
 
