@@ -1,13 +1,15 @@
 import pg from 'pg';
+import dotenv from "dotenv";
+dotenv.config();
 
 const { Pool } = pg;
 
 const connection = new Pool({
-    host: 'localhost',
-    port: 5432,
-    database: 'shortly',
-    user: 'bootcamp_role',
-    password: 'senha_super_hiper_ultra_secreta_do_role_do_bootcamp'
+    host: process.env.PG_HOST,
+    port: process.env.PG_PORT,
+    database: process.env.PG_DATABASE,
+    user: process.env.PG_USER,
+    password: process.env.PG_PASSWORD
 });
 
 export default connection;

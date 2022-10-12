@@ -49,8 +49,7 @@ async function getUrlById(req, res) {
 async function redirectToUrl(req, res) {
     const shortUrl = req.params.shortUrl;
     const url = res.locals.url;
-    console.log(url);
-    let visitCount = 0;
+    let visitCount;
 
     try {
         visitCount = url.visitCount;
@@ -72,7 +71,7 @@ async function redirectToUrl(req, res) {
 
 async function deleteUrlById(req, res) {
     const id = req.params.id;
-    
+
     try {
         await connection.query(`
             DELETE FROM urls
