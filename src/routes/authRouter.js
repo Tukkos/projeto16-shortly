@@ -5,7 +5,7 @@ import { doesPasswordConfirm, isEmailRepeated, signInSchemaVallidation, signUpSc
 
 const userRouter = express.Router();
 
-userRouter.get(
+userRouter.post(
     '/signup',
     signUpSchemaValidation,
     isEmailRepeated,
@@ -13,7 +13,7 @@ userRouter.get(
     signUp
 );
 
-userRouter.get(
+userRouter.post(
     '/signin',
     signInSchemaVallidation,
     isEmailRepeated,

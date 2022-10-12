@@ -1,16 +1,35 @@
 import express from 'express';
 
-import { shortenUrl } from '../controllers/urlController.js';
+import { deleteUrlById, getUrlById, redirectToUrl, shortenUrl } from '../controllers/urlController.js';
 import { authValidation } from '../middlewares/authValidation.js';
-import { isItUrl } from '../middlewares/urlVallidation.js';
+import { doesUrlExistsById, doesUrlExistsByShortUrl, doesUrlMatchUser, isItUrl } from '../middlewares/urlVallidation.js';
 
 const urlRouter = express.Router();
 
-urlRouter.get(
-    '/url/shorten',
+urlRouter.post(
+    '/urls/shorten',
     authValidation,
     isItUrl,
     shortenUrl
+);
+
+urlRouter.get(
+    '/urls/:id',
+    getUrlById
+);
+
+urlRouter.get(
+    '/urls/open/:shortUrl',
+    doesUrlExistsByShortUrl,
+    redirectToUrl
+);
+
+urlRouter.delete(
+    '/urls/:id',
+    authValidation,
+    doesUrlExistsById,
+    doesUrlMatchUser,
+    deleteUrlById
 );
 
 export default urlRouter;
