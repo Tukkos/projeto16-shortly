@@ -14,7 +14,7 @@ userRouter.get(
 );
 
 userRouter.get(
-    '/rankings',
+    '/ranking',
     getRanking
 );
 
