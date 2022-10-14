@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getUsersUrls } from './controllers/userController.js';
+import { getRanking, getUsersUrls } from './controllers/userController.js';
 import { authValidation } from './middlewares/authValidation.js';
 import { getUsersById } from './middlewares/userVallidation.js';
 
@@ -11,6 +11,11 @@ userRouter.get(
     authValidation,
     getUsersById,
     getUsersUrls
-)
+);
+
+userRouter.get(
+    '/rankings',
+    getRanking
+);
 
 export default userRouter;
