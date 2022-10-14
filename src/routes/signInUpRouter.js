@@ -1,11 +1,11 @@
 import express from 'express';
 
-import { signIn, signUp } from '../controllers/authController.js';
+import { signIn, signUp } from '../controllers/signInUpController.js';
 import { doesPasswordConfirm, isEmailRepeated, signInSchemaVallidation, signUpSchemaValidation } from '../middlewares/signInUpValidation.js';
 
-const userRouter = express.Router();
+const signInUpRouter = express.Router();
 
-userRouter.post(
+signInUpRouter.post(
     '/signup',
     signUpSchemaValidation,
     isEmailRepeated,
@@ -13,11 +13,11 @@ userRouter.post(
     signUp
 );
 
-userRouter.post(
+signInUpRouter.post(
     '/signin',
     signInSchemaVallidation,
     isEmailRepeated,
     signIn
 );
 
-export default userRouter;
+export default signInUpRouter;
