@@ -20,6 +20,4 @@ server.get('/status', (req, res) => {
     res.send('ok');
 });
 
-server.listen(process.env.PORT, () => {
-    console.log("Server running on port " + process.env.PORT);
-});
+server.listen(4000, () => console.log("Listen on http://localhost:4000"));
